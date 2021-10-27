@@ -23,3 +23,29 @@
   transition: 1s;
   width: 350px;
 }
+
+@media screen and (max-width: 770px) {
+  .header-FirstPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .section-Images-firstPage {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  
+  .images-FirstPage {
+    width: 200px;
+    margin: 20px;
+    transition: 0.5s;
+  }
+  
+  .images-FirstPage:hover {
+    transition: 1s;
+    width: 250px;
+  }
+}

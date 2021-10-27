@@ -1,12 +1,12 @@
 .pokemon-image {
-  width: 120px;
+  width: 150px;
   margin-left: 15px;
 }
 
 .name-pokemon {
 display: flex;
 justify-content: flex-start;
-font-family: 'Poppins';
+font-family: sans-serif;
 font-style: normal;
 font-weight: 600;
 font-size: 18px;
@@ -215,7 +215,6 @@ color: #000000;
   border-radius: 10px;
 }
 
-
 .tag-p-bug {
   display: flex;
   align-items: center;
@@ -254,7 +253,7 @@ color: #000000;
   background: #269dff;
   border-radius: 10px;
 }
-
+  
 .status-bar {
 display: flex;
 height: 12px;
@@ -410,4 +409,43 @@ body {
 
 .press-enter-text {
   color: yellow;
+}
+
+@media screen and (max-width: 770px){
+  .pokemon-image {
+    width: 120px;
+    margin-left: 15px;
+  }
+  .header-section {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 40px;
+  }
+  
+  .press-enter-text {
+    color: yellow;
+  }
+
+  .main-search-pokes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+  }
+
+  .main-poke-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+  }
+
+  #root {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
 }

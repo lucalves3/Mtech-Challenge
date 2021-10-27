@@ -17,6 +17,10 @@ export class ProcurarPokemons extends Component {
     this.submitSearch = this.submitSearch.bind(this);
   }
 
+  componentDidMount() {
+    alert('Digite o nome do pokemon e aperte Enter')
+  }
+
   getPokemonName(event) {
     const name = event.target.value;
     this.setState({
@@ -28,16 +32,14 @@ export class ProcurarPokemons extends Component {
     const { namePokemon } = this.state;
     if (event.key === 'Enter') {
       const APIreturn = await searchApiPokemon(namePokemon);
-      console.log(APIreturn);
       this.setState({
         arrayObject: APIreturn
-      })
+      });
     }
   }
 
   render() {
     const  { arrayObject } = this.state;
-    console.log(arrayObject.stats);
     const InputExampleIcon = () => <Input onChange={ this.getPokemonName } onKeyDown={ this.submitSearch } icon='search' placeholder='Search...' />
     return (
       <>
@@ -49,49 +51,47 @@ export class ProcurarPokemons extends Component {
         </Link>
           { InputExampleIcon() }
         </header>
-        <hero className="main-poke-search">
-          <section>
-          </section>
-          { arrayObject.length !== 0 ? 
+          { arrayObject.length !== 0 ?
+          <main className="main-search-pokes">
           <section className="card">
-          <div>
-            <h2> { arrayObject.name } </h2>
             <div>
-              {<img className="pokemon-image" src={ arrayObject.sprites.front_default } alt={ arrayObject.name } />}
-              {<img className="pokemon-image" src={ arrayObject.sprites.back_default } alt={ arrayObject.name } />}
-            </div>
-            <div>
-              <h2><span>{arrayObject.weight}Kg</span></h2>
-              <div className="container-types">
-                { arrayObject.types.map((name) => (
-                  <p key={ name.url } className={`tag-p-${name.type.name}`}>{ name.type.name }</p>
-                ))}
+              <h2> { arrayObject.name } </h2>
+              <div>
+                {<img className="pokemon-image" src={ arrayObject.sprites.front_default } alt={ arrayObject.name } />}
+                {<img className="pokemon-image" src={ arrayObject.sprites.back_default } alt={ arrayObject.name } />}
+              </div>
+              <div>
+                <h2><span>{arrayObject.weight}Kg</span></h2>
+                <div className="container-types">
+                  { arrayObject.types.map((name) => (
+                    <p key={ name.url } className={`tag-p-${name.type.name}`}>{ name.type.name }</p>
+                    ))}
+                </div>
+              </div>
+              <div>
+                <h1>Estatísticas</h1>
+                  <section>
+                    { arrayObject.stats.map((element) => (
+                      (<div key={element.name}>
+                        <div className="div-status-all" >
+                          <div>
+                            <p>{element.stat.name}</p>
+                          </div>
+                          <div className="status-bar">
+                            <p className="status-bar-p" style={{width: `${element.base_stat}%`}}></p>
+                          </div>
+                          <div>
+                            <p className="tag-p-basestat">{element.base_stat}</p>
+                          </div>
+                        </div>
+                      </div>)
+                    ))}
+                  </section>
               </div>
             </div>
-            <div>
-              <h1>Estatísticas</h1>
-                <section>
-                  { arrayObject.stats.map((element) => (
-                    (<div key={element}>
-                      <div className="div-status-all" >
-                        <div>
-                          <p>{element.stat.name}</p>
-                        </div>
-                        <div className="status-bar">
-                          <p className="status-bar-p" style={{width: `${element.base_stat}%`}}></p>
-                        </div>
-                        <div>
-                          <p className="tag-p-basestat">{element.base_stat}</p>
-                        </div>
-                      </div>
-                    </div>)
-                  ))}
-                </section>
-            </div>
-          </div>
           </section>
-        : <h1 className="press-enter-text">Digite o nome do Pokemon e aperte Enter</h1> }
-        </hero>
+        </main>
+        : '' }
       </>
     )
   }

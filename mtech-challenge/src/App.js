@@ -1,9 +1,16 @@
-import { Header } from './style';
+import { Route, Switch } from 'react-router-dom';
+import Initial from './pages/first-page';
+import PokePage from './pages/poke-pages';
+import '../src/APP.css';
 
 function App() {
   return (
-    <div>
-    </div>
+    <>
+      <Switch>
+        <Route exact path="/" component={ Initial } />
+        <Route path="/pokemons" component={ PokePage } />
+      </Switch>
+    </>
   );
 }
 

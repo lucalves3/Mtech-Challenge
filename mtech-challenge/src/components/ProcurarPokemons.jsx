@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Input } from 'semantic-ui-react';
+import { Input, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { searchApiPokemon } from '../services/APIs';
+import '../styles/ProcurarPokemons.css'
 
 export class ProcurarPokemons extends Component {
   constructor() {
@@ -42,7 +43,9 @@ export class ProcurarPokemons extends Component {
       <>
         <header className="header-section">
         <Link to="/">
-          <button type="button">Retornar</button>
+          <Button basic inverted color='yellow'>
+            Retornar
+          </Button>
         </Link>
           { InputExampleIcon() }
         </header>
@@ -87,7 +90,7 @@ export class ProcurarPokemons extends Component {
             </div>
           </div>
           </section>
-        : <h1>Digite o nome do Pokemon e aperte Enter</h1> }
+        : <h1 className="press-enter-text">Digite o nome do Pokemon e aperte Enter</h1> }
         </hero>
       </>
     )

@@ -5,6 +5,7 @@ export class PokePage extends Component {
   render() {
     return (
       <>
+      
         <ProcurarPokemons />
       </>
     )

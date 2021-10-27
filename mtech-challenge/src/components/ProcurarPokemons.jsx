@@ -23,8 +23,9 @@ export class ProcurarPokemons extends Component {
 
   getPokemonName(event) {
     const name = event.target.value;
+    
     this.setState({
-      namePokemon: name,
+      namePokemon: name.toLowerCase(),
     })
   }
 
@@ -39,7 +40,7 @@ export class ProcurarPokemons extends Component {
   }
 
   render() {
-    const  { arrayObject } = this.state;
+    const  { arrayObject, namePokemon } = this.state;
     const InputExampleIcon = () => <Input onChange={ this.getPokemonName } onKeyDown={ this.submitSearch } icon='search' placeholder='Search...' />
     return (
       <>
@@ -55,7 +56,7 @@ export class ProcurarPokemons extends Component {
           <main className="main-search-pokes">
           <section className="card">
             <div>
-              <h2> { arrayObject.name } </h2>
+              <h2> { namePokemon.toUpperCase() } </h2>
               <div>
                 {<img className="pokemon-image" src={ arrayObject.sprites.front_default } alt={ arrayObject.name } />}
                 {<img className="pokemon-image" src={ arrayObject.sprites.back_default } alt={ arrayObject.name } />}
